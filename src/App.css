@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "BubbleDots";
+  src: url("./assets/fonts/CFDots-Regular.ttf") format("truetype");
+}
+
+body {
+  font-family: "BubbleDots", sans-serif;
+}
