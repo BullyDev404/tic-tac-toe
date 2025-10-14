@@ -1,12 +1,16 @@
 import player1 from "../../../assets/playerIcons/player1.svg";
 import player2 from "../../../assets/playerIcons/player2.svg";
 
-function Grid({ board, handleMove, name }) {
+function Grid({ board, handleMove, name, currentPlayer }) {
   return (
     <>
       {/* player icons */}
       <div className="flex justify-between items-end w-[22rem]">
-        <div className="w-fit h-fit">
+        <div
+          className={`w-fit h-fit transition-opacity duration-400 ${
+            currentPlayer === name ? "" : "opacity-20"
+          }`}
+        >
           <h1 className="font-mono text-lg font-semibold tracking-tight text-center">
             {name}
           </h1>
@@ -18,7 +22,12 @@ function Grid({ board, handleMove, name }) {
             className="-mt-7 -mb-2"
           />
         </div>
-        <div className="w-fit h-fit">
+
+        <div
+          className={`w-fit h-fit transition-opacity duration-400 ${
+            currentPlayer !== name ? "" : "opacity-20"
+          }`}
+        >
           <h1 className="font-mono text-lg font-bold tracking-tight text-center">
             Player 2
           </h1>

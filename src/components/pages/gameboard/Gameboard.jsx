@@ -49,9 +49,9 @@ function Gameboard() {
   return (
     <div className="h-screen flex flex-col items-center justify-center bg-[#cccccc] text-white">
       <h1 className="text-3xl font-bold mb-6 font-mono">Tic Tac Toe</h1>
-      <Grid board={board} handleMove={handleMove} name={name} />
+      <Grid board={board} handleMove={handleMove} name={name} currentPlayer={currentPlayer} />
       <p className="mt-6 text-lg font-mono text-black">
-        {currentPlayer === name ? "Your Move" : "AI's Move"}
+        {currentPlayer === name ? "Your Move..." : "AI's Move..."}
       </p>
     </div>
   );
