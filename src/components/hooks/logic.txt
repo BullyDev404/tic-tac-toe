@@ -1,0 +1,17 @@
+AI should
+1. Try to win if it can, if 3 rows can be filled then fill it.
+2. if player can complete 3, then block it. yes
+3. pick center as first move if it can. (if index 4 === null ) then fill 4
+
+
+Winning combos 
+012,
+345,
+678,
+036,
+147,
+258,
+048,
+246,
+
+

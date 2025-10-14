@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function Gameboard() {
+  //Navigation stuff
   const { search } = useLocation();
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(search);
@@ -31,9 +32,8 @@ function Gameboard() {
 
   return (
     <div className="h-screen flex flex-col items-center justify-center bg-[#cccccc] text-white">
-    
       <h1 className="text-3xl font-bold mb-6 font-mono">Tic Tac Toe</h1>
-      <Grid board={board} handleMove={handleMove} />
+      <Grid board={board} handleMove={handleMove} name={name} />
       <p className="mt-6 text-lg font-mono text-black">
         {currentPlayer === name ? "Your Move" : "AI's Move"}
       </p>
