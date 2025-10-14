@@ -1,12 +1,15 @@
+import { Link } from "react-router-dom";
+
 function Info() {
   return (
     <div
-      className="flex flex-col min-h-screen w-screen text-black p-5 py-10 space-y-12 h-screen items-center justify-center 
+      className="flex flex-col min-h-screen max-w-screen text-black p-5 py-10 space-y-12 items-center justify-center 
              bg-[url('./assets/xo_grid.png')] bg-repeat relative"
+
     >
       <div className="max-w-4xl mx-auto text-center md:text-left">
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold pb-3">
-          What is Tic tac toe
+          What is Tic Tac Toe
         </h1>
         <p className="font-sans text-base sm:text-lg md:text-xl leading-relaxed">
           Tic-tac-toe or X-O is a game for two players who take turns marking
@@ -15,7 +18,6 @@ function Info() {
           diagonal row is the winner.
         </p>
       </div>
-
       <div className="max-w-4xl mx-auto text-center md:text-left">
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold pb-3">
           How AI Works
@@ -29,17 +31,10 @@ function Info() {
           it.
         </p>
       </div>
-
       <div className="max-w-4xl mx-auto text-center md:text-left">
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold pb-3">
           About Me
         </h1>
-        {/* <p className="font-sans text-base sm:text-lg md:text-xl leading-relaxed">
-          Hi, I’m BullyDev. I built this game to sharpen my React and logic
-          skills. Here are a few links if you’d like to connect or see more of
-          my projects —
-        </p> */}
-
         <p className="font-sans text-base sm:text-lg md:text-xl leading-relaxed">
           Hey there! I’m <span className="font-bold">BullyDev</span>, the mind
           behind this game. I hope you enjoyed playing it! You can check out
@@ -55,6 +50,13 @@ function Info() {
           .
         </p>
       </div>
+      <Link
+        to="/"
+        className=" bg-white/70 hover:bg-white text-black border-2 border-black rounded-full 
+                   px-5 py-2 font-mono text-sm md:text-base shadow-md transition-all duration-200 m-auto max-w-4xl"
+      >
+        ← Back
+      </Link>
     </div>
   );
 }

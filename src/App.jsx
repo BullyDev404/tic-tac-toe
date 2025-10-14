@@ -22,7 +22,7 @@ function App() {
       </Link>
 
       <div className="p-3 text-black flex flex-col items-center justify-center gap-30 ">
-        <div className="text-center bg-transparent backdrop-blur-sm max-w-7xl text-5xl md:text-6xl lg:text-8xl">
+        <div className="text-center p-3 bg-transparent backdrop-blur-sm max-w-7xl text-5xl md:text-6xl lg:text-8xl">
           TIC TAC TOE!
         </div>
 

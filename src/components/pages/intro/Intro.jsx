@@ -7,24 +7,16 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Link } from "react-router-dom";
 
 function Intro() {
   const [open, setOpen] = useState(true);
   const [name, setName] = useState("");
 
-  const handleDone = () => {
-    if (name.trim()) {
-      setOpen(false);
-    } else {
-      alert("Please enter your name!");
-    }
-  };
-
   return (
-    <div className="h-screen flex items-center justify-center bg-gray-900 text-white font-mono">
-    
+    <div className="h-screen flex items-center justify-center font-mono bg-[url('./assets/xo_grid.png')] bg-repeat relative">
       {/* Modal */}
-      <Dialog open={open} onOpenChange={setOpen}>
+      <Dialog open={open} className="align-center justify-center m-auto ">
         <DialogContent className="bg-white text-black rounded-xl p-6 w-[90%] max-w-sm">
           <DialogHeader>
             <DialogTitle className="text-2xl text-center font-semibold mb-3">
@@ -43,24 +35,16 @@ function Intro() {
             className="mb-4 font-mono"
           />
 
-          <Button
-            onClick={handleDone}
-            className="m-auto px-4 w-fit border-2 rounded-3xl font-semibold hover:bg-black hover:text-white transition-all duration-300"
-          >
-            Start Game
+          <Button asChild disabled={!name.trim()}>
+            <Link
+              to={`/newgame?name=${name}`}
+              className="px-4 w-fit border-2 rounded-3xl font-semibold hover:bg-black hover:text-white transition-all duration-300 m-auto"
+            >
+              Start Game
+            </Link>
           </Button>
         </DialogContent>
       </Dialog>
-
-      
-      {!open && (
-        <div className="text-center space-y-2">
-          <h1 className="text-4xl font-bold mb-3">Welcome, {name}! 👋</h1>
-          <p className="text-lg tracking-tight text-gray-300">
-            Get ready to make your move — the grid awaits.
-          </p>
-        </div>
-      )}
     </div>
   );
 }

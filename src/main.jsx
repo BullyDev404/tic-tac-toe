@@ -3,8 +3,10 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
-import Intro from "./Intro.jsx";
-import Info from "./Info.jsx";
+import Intro from "./components/pages/intro/Intro.jsx";
+import Info from "./components/pages/info/Info.jsx";
+// import Gameboard from "./components/pages/gameboard/Gameboard.jsx";
+import Gameboard from "./components/pages/gameboard/Gameboard.jsx";
 
 const route = createBrowserRouter([
   {
@@ -18,6 +20,10 @@ const route = createBrowserRouter([
   {
     path: "/info",
     element: <Info />,
+  },
+  {
+    path: "/newgame",
+    element: <Gameboard />,
   },
 ]);
 
