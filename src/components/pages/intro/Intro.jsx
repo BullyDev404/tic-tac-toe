@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
 
 function Intro() {
+  // eslint-disable-next-line no-unused-vars
   const [open, setOpen] = useState(true);
   const [name, setName] = useState("");
 
