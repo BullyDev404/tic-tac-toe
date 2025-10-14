@@ -1,6 +1,7 @@
 import Grid from "../gameboard/Grid";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import WinnerChecker from "../../hooks/WinnerChecker";
 
 function Gameboard() {
   //Navigation stuff
@@ -21,13 +22,28 @@ function Gameboard() {
   }, [name, navigate]);
 
   const handleMove = (index) => {
-    if (board[index]) return;
+    if (board[index]) return; // if there's already one value in the box prev.
 
+    //adding changes to board
     const newBoard = [...board];
     newBoard[index] = turn;
     setBoard(newBoard);
+
+    // changing value of input and currentplayer
     setTurn(turn === "X" ? "O" : "X");
     setCurrentPlayer(currentPlayer === name ? "AI" : name);
+
+    //Checking for a qinner
+    const winner = WinnerChecker(newBoard);
+    if (winner) {
+      setTimeout(() => {
+        alert(`${winner === "X" ? name : "AI"} wins!`);
+        setBoard(Array(9).fill(null));
+        setTurn("X");
+        setCurrentPlayer(name);
+      }, 100);
+      return;
+    }
   };
 
   return (
