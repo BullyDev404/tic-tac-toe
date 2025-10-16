@@ -16,7 +16,7 @@ function WinnerChecker(board) {
       return board[a];
     }
   }
-  return null;
+  return board.includes(null) ? null : "Draw";
 }
 
 export default WinnerChecker;
