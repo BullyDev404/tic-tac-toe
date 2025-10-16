@@ -28,8 +28,8 @@ function Grid({ board, handleMove, name, currentPlayer }) {
             currentPlayer !== name ? "" : "opacity-20"
           }`}
         >
-          <h1 className="font-mono text-lg font-bold tracking-tight text-center">
-            Player 2
+          <h1 className="font-mono text-lg font-bold tracking-tight text-center text-[#1e293b]">
+            Computer
           </h1>
           <img
             src={player2}
