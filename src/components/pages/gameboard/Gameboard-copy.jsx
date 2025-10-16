@@ -2,28 +2,18 @@ import Grid from "../gameboard/Grid";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import WinnerChecker from "../../hooks/WinnerChecker";
-import useAIMove from "../../hooks/useAIMove"; // 👈 import AI hook
 
 function Gameboard() {
-  // Navigation stuff
+  //Navigation stuff
   const { search } = useLocation();
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(search);
   const name = queryParams.get("name");
 
-  // Board details
+  ///Board details
   const [board, setBoard] = useState(Array(9).fill(null));
   const [turn, setTurn] = useState("X");
   const [currentPlayer, setCurrentPlayer] = useState(name);
-
-  const makeAIMove = useAIMove(
-    board,
-    turn,
-    setBoard,
-    setTurn,
-    setCurrentPlayer,
-    name
-  );
 
   useEffect(() => {
     if (!name || name.trim() === "") {
@@ -31,24 +21,21 @@ function Gameboard() {
     }
   }, [name, navigate]);
 
-  // Run AI automatically when it's AI’s turn
-  useEffect(() => {
-    if (turn === "O" && currentPlayer === "AI") {
-      const timer = setTimeout(() => {
-        makeAIMove();
-      }, 600); // small delay for realism
-      return () => clearTimeout(timer);
-    }
-  }, [turn, currentPlayer, makeAIMove]);
 
   // Handle move function
   const handleMove = (index) => {
-    if (board[index] || turn !== "X") return; // Prevent overwriting or double turns
+    if (board[index]) return; // if there's already one value in the box prev.
 
+    //adding changes to board
     const newBoard = [...board];
     newBoard[index] = turn;
     setBoard(newBoard);
 
+    // changing value of input and currentplayer
+    setTurn(turn === "X" ? "O" : "X");
+    setCurrentPlayer(currentPlayer === name ? "AI" : name);
+
+    //Checking for a qinner
     const winner = WinnerChecker(newBoard);
     if (winner) {
       setTimeout(() => {
@@ -59,9 +46,6 @@ function Gameboard() {
       }, 100);
       return;
     }
-
-    setTurn("O");
-    setCurrentPlayer("AI");
   };
 
   return (
